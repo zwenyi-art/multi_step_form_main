@@ -25,12 +25,17 @@ $font-family-sans-serif:'Ubuntu', sans-serif;
 }
 
 .side_bar{
-  display:flex;
-  min-height: 77vh;
+  display:inline-flex;
+  flex-wrap: wrap;
   position: relative;
   background-image: url('/assets/images/bg-sidebar-desktop.svg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-
+  justify-content: center;
+  min-height: 77vh;
+  width: 100%;
+}
+.side_bar_item{
+  margin: 6px;
 }
