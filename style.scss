@@ -25,8 +25,12 @@ $font-family-sans-serif:'Ubuntu', sans-serif;
 }
 
 .side_bar{
+  display:flex;
+  min-height: 77vh;
+  position: relative;
   background-image: url('/assets/images/bg-sidebar-desktop.svg');
   background-repeat: no-repeat;
-  height:80vh;
+  background-position: center center;
   background-size: cover;
+
 }
