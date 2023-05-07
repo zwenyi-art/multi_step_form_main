@@ -1,6 +1,7 @@
 import './style.scss';
-
+import 'animate.css';
 const content_1=_=>{
+   
     let right_page = document.getElementById("right_page");
     let div=document.createElement("div");
     div.classList.add("d-flex","flex-column","right_content","content-1");
@@ -35,20 +36,23 @@ const content_1=_=>{
             </div>
             
             <div class=" right_btn bg-light">
-             <div class="d-flex justify-content-evenly ">
+             <div class="d-flex justify-content-evenly p-2 rounded-1">
               <div class=""></div>
-              <div class="btn btn-primary" id="page-2" onclick="next()">NextStep</div>
+              <div class="btn btn-primary"  onclick ="page_transform('next_page','content_1')" >NextStep</div>
              </div>
             </div>`;
 
             right_page.append(div);
+
+            
+           
 }
 
 
 
-const content_2=_=>{
+export const content_2=_=>{
     let right_page = document.getElementById("right_page");
-
+    
     let content = document.createElement("div");
     content.classList.add('content-2');
     content.innerHTML=`
@@ -120,47 +124,237 @@ const content_2=_=>{
     </div>
     
     <div class=" right_btn bg-light">
-     <div class="d-flex justify-content-evenly ">
-      <a class="btn bg-light" onclick="goback()">Go Back</a>
-      <button type="button" class="btn btn-primary" onclick="sutown()">Next Step</button>
+     <div class="d-flex justify-content-evenly p-2 rounded-1">
+      <a class="btn bg-light" id="bpage-1" onclick="page_transform('back_page','content_2')">Go Back</a>
+      <button type="button" class="btn btn-primary" id="npage-2" onclick="page_transform('next_page','content_2')">Next Step</button>
      </div>
     </div>
     `;
    right_page.append(content);
+  //  pageDetect('content_2','page-2');
+}
+
+
+
+
+const content_3=_=>{
+  let right_page = document.getElementById("right_page");
+
+  let content = document.createElement("div");
+  content.classList.add('content-3');
+  content.innerHTML=`
+  <div class="p-2 bg-white rounded-3 right_form">
+              
+              
+  <div class="d-flex flex-column">
+      <div class="py-1 ">
+          <h4 class="fw-bolder p-0">Pick add-ons</h4>
+          <div class="text-black-50">Add-ons help enhance your gaming experience.</div>
+      </div>
+     
+    <div class=" pt-3">
+       <div class="d-flex flex-column gap-3 justify-content-center">
+         <div class="rounded-2 services p-3">
+            
+          <div class=" d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-center">
+              <input  type="checkbox" value="" id="flexCheckChecked" checked>
+               <label for="flexCheckChecked" class="px-3">
+                 <span class="fw-bolder">Online Service</span><br>
+                 <span class="small text-black-50">Access to multiplayer games</span>
+               </label>
+            </div>
+            <div class="text-primary fw-semibold">+ $10/yr</div>
+          </div>
+         </div>
+
+         <div class="rounded-2 services p-3">
+            
+          <div class=" d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-center">
+              <input  type="checkbox" value="" id="flexCheckChecked" checked>
+               <label for="flexCheckChecked" class="px-3">
+                 <span class="fw-bolder">Larger Storage</span><br>
+                 <span class="small text-black-50">Extra 1TB of cloud save</span>
+               </label>
+            </div>
+            <div class="text-primary fw-semibold">+ $20/yr</div>
+          </div>
+         </div>
+
+         <div class="rounded-2 services p-3">
+            
+          <div class=" d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-center">
+              <input  type="checkbox" value="" id="flexCheckChecked">
+               <label for="flexCheckChecked" class="px-3">
+                 <span class="fw-bolder">Customizable Profile</span><br>
+                 <span class="small text-black-50">Custom theme on your profile</span>
+               </label>
+            </div>
+            <div class="text-primary fw-semibold">+ $20/yr</div>
+          </div>
+         </div>
+          
+         
+       </div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class=" right_btn bg-light">
+<div class="d-flex justify-content-evenly p-2 rounded-1">
+<a class="btn bg-light"  onclick="page_transform('back_page','content_3')">Go Back</a>
+<button type="button" class="btn btn-primary" onclick="page_transform('next_page','content_3')">Next Step</button>
+</div>
+</div>
+
+    
+</div>
+  `;
+ right_page.append(content);
+
+}
+
+window.plan_yr_change=function(event){
+  let plan_yr_mo=document.querySelector('.plan_yr_mo');
+  let plan_amount=document.querySelector('.plan_amount');
+  let service_cost=document.querySelector('.service_cost');
+  let storage_cost=document.querySelector('.storage_cost');
+  let total_cost=document.querySelector('.total_cost');
+  if(plan_yr_mo.innerText == 'Arcade(Monthly)')
+  {
+       plan_yr_mo.innerHTML=`Arcade&#40;Yearly&#41;`
+       plan_amount.innerText='$90/mo' ;
+       service_cost.innerText='+$10/mo';
+       storage_cost.innerText='+$20/mo';
+       total_cost.innerText='+$120/mo';
+  }
+  else{
+       plan_yr_mo.innerHTML=`Arcade&#40;Monthly&#41;`;
+       plan_amount.innerText='$9/mo' ;
+       service_cost.innerText='+$1/mo';
+       storage_cost.innerText='+$2/mo';
+       total_cost.innerText='+$12/mo';
+  }
+
+    
+  
+}
+
+
+const content_4=_=>{
+  let right_page = document.getElementById("right_page");
+
+  let content = document.createElement("div");
+  content.classList.add('content-4');
+  content.innerHTML=`
+  <div class="p-2 bg-white rounded-3 right_form">     
+        <div class="d-flex flex-column">
+            <div class="py-1 ">
+                <h4 class="fw-bolder p-0">Finishing up</h4>
+                <div class="text-black-50">Double-check everything looks OK before confirming.</div>
+            </div>
+
+            <div class="bg-light rounded-2">
+               <div class="d-flex justify-content-between align-items-center px-5 py-3">
+                <div class="d-flex flex-column">
+                  <div class="plan_yr_mo">Arcade&#40;Monthly&#41;</div>
+                  <a href="#" class="small text-black-50" onclick="plan_yr_change(event)">Change</a>
+                </div>
+                <div class="fw-bold plan_amount" >$9/mo</div>
+               </div>
+
+               <div class="d-flex justify-content-between align-items-center px-5 py-2 pt-4">
+                <div class="small text-black-50">Online Service</div>
+                <div class="service_cost">+$1/mo</div>
+               </div>
+
+               <div class="d-flex justify-content-between align-items-center px-5 pb-4">
+                <div class="small text-black-50">Larger Storage</div>
+                <div class="storage_cost">+$2/mo</div>
+               </div>
+            </div>
+
+            <div class="d-flex justify-content-between px-5 py-4">
+              <div class="">Total per month</div>
+              <div class="fw-semibold text-primary total_cost">+$12/mo</div>
+            </div>
+           
+        </div>
+    </div>
+    
+    <div class=" right_btn bg-light">
+     <div class="d-flex justify-content-evenly p-2 rounded-1">
+     <a class="btn bg-light"  onclick="page_transform('back_page','content_4')">Go Back</a>
+     <button type="button" class="btn btn-primary"  onclick="page_transform('next_page','content_4')">Next Step</button>
+     </div>
+    </div>
+  `;
+ right_page.append(content);
 }
 content_1();
+//  
+// content_2();
+// content_3();
+// content_4();
+window.page_transform=function(myhellobtn,pages){
+  const myfunctons = {
+    "back_page":back_page,
+    "next_page":next_page,
+    "content_1":content_1,
+    "content_2":content_2,
+    "content_3":content_3,
+    "content_4":content_4,
+  }
+  
+  console.log("welcome from Page_transform");
+  let pages_array = [...pages];
+  let my_num = pages_array.reduce(function(pv,cv){
+    let nums="0123456789";
+    if(nums.includes(cv)){
+      return pv+cv;
+    }
+    return pv;
+  },"");
+  function back_page(){
+    let page_name = "content_";
+    let pg_no = Number(my_num)-1;
+    let old_page_name = page_name + my_num;
+    let new_page_name= page_name + pg_no;
+    console.log("I left old page",old_page_name);
+    console.log("I arrived at new page",new_page_name);
+    myfunctons[new_page_name]();
+    another_page(my_num,pg_no)
+  }
+  function next_page(){
+    let page_name = "content_";
+    let pg_no = Number(my_num)+1;
+    let old_page_name = page_name + my_num;
+    let new_page_name= page_name + pg_no;
+    console.log("I left old page",old_page_name);
+    console.log("I arrived at new page",new_page_name);
+    myfunctons[new_page_name]();
+    another_page(my_num,pg_no)
+  }
 
-
-window.next=function(){
-    content_2();
-    let old_content=document.querySelector(".content-1")
-    let pg_1 = document.getElementById("pg-1");
-    let pg_2 = document.getElementById("pg-2");
-
+  function another_page(my_num,pg_no){
+  
+    let old_page_name =".content-" + my_num;
+    let old_content=document.querySelector(old_page_name);
+    let pg_1 = document.getElementById("pg-"+my_num);
+    let pg_2 = document.getElementById("pg-"+pg_no);
+  
     pg_1.classList.replace("my_items","my_items1");
     pg_2.classList.replace("my_items1","my_items");
     old_content.remove();
-
-    console.log("Hello");
-    
+    console.log(old_page_name,my_num,pg_no);
+  }
+  
+  myfunctons[myhellobtn]();
 }
 
-window.goback=function(){
-    content_1();
-    let old_content=document.querySelector(".content-2")
-    let pg_1 = document.getElementById("pg-1");
-    let pg_2 = document.getElementById("pg-2");
 
-    pg_1.classList.replace("my_items1","my_items");
-    pg_2.classList.replace("my_items","my_items1");
-    old_content.remove();
-    console.log("Hello");
-    
-}
 
-window.sutown=function(){
-    let right_page = document.getElementById("right_page");
-    right_page.innerHTML=`<h1>
-    ဆုတောင်းလေ ကြည့်ချင်ရင် 😂😂😂😂
-    </h1>`
-}
